@@ -1,0 +1,23 @@
+[
+  {
+    "name": "profile",
+    "path": "/profile",
+    "component": "/Users/ChoiJunYong/Documents/vuenodebird/front/pages/profile.vue",
+    "chunkName": "pages/profile",
+    "_name": "_ad5936e2"
+  },
+  {
+    "name": "signup",
+    "path": "/signup",
+    "component": "/Users/ChoiJunYong/Documents/vuenodebird/front/pages/signup.vue",
+    "chunkName": "pages/signup",
+    "_name": "_3931e122"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/ChoiJunYong/Documents/vuenodebird/front/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_9ccdba90"
+  }
+]
