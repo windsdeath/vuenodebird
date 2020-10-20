@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nuxt"
+    "dev": "nuxt",
+    "lint": "eslint --ext .js,.vue"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +17,8 @@
     "vuetify": "^2.3.14"
   },
   "devDependencies": {
-    "@nuxtjs/vuetify": "^1.11.2"
+    "@nuxtjs/vuetify": "^1.11.2",
+    "eslint": "^7.11.0",
+    "eslint-plugin-vue": "^7.1.0"
   }
 }
