@@ -1,12 +1,15 @@
 <template>
-  <div>Hello {{name}}</div>
+  <v-container>
+    <div>
+    </div>
+  </v-container>
 </template>
 
 <script>
 export default {
-    data(){
+    data() {
         return {
-            name:'Nuxt.js',
+            name: 'Nuxt.js',
         }
     }
 }

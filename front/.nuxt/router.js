@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
+const _8bbc6a88 = () => interopDefault(import('../pages/nuxt.config.js' /* webpackChunkName: "pages/nuxt.config" */))
 const _ad5936e2 = () => interopDefault(import('../pages/profile.vue' /* webpackChunkName: "pages/profile" */))
 const _3931e122 = () => interopDefault(import('../pages/signup.vue' /* webpackChunkName: "pages/signup" */))
 const _9ccdba90 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
@@ -24,6 +25,10 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
+    path: "/nuxt.config",
+    component: _8bbc6a88,
+    name: "nuxt.config"
+  }, {
     path: "/profile",
     component: _ad5936e2,
     name: "profile"

@@ -1,5 +1,12 @@
 [
   {
+    "name": "nuxt.config",
+    "path": "/nuxt.config",
+    "component": "/Users/ChoiJunYong/Documents/vuenodebird/front/pages/nuxt.config.js",
+    "chunkName": "pages/nuxt.config",
+    "_name": "_8bbc6a88"
+  },
+  {
     "name": "profile",
     "path": "/profile",
     "component": "/Users/ChoiJunYong/Documents/vuenodebird/front/pages/profile.vue",
