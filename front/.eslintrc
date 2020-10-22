@@ -1,19 +1,18 @@
 {
-    "parserOptions":{
-        "ecmaVersion":2019,
-        "souceType":"module"
+    "parserOptions": {
+        "ecmaVersion": 2019,
+        "souceType": "module"
 
     },
-    "env":{
-        "browser":true,
+    "env": {
+        "browser": true,
         "node": true
     },
-    "extends":[
+    "extends": [
         "plugin:vue/recommended"
     ],
-    "plugins":[
-    ],
-    "rules":{
+    "plugins": [],
+    "rules": {
 
     }
 }

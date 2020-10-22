@@ -1,24 +1,26 @@
 {
-  "name": "vuenodebirdfront",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "nuxt",
-    "lint": "eslint --ext .js,.vue"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@nuxtjs/axios": "^5.12.2",
-    "axios": "^0.20.0",
-    "nuxt": "^2.14.7",
-    "vue": "^2.6.12",
-    "vuetify": "^2.3.14"
-  },
-  "devDependencies": {
-    "@nuxtjs/vuetify": "^1.11.2",
-    "eslint": "^7.11.0",
-    "eslint-plugin-vue": "^7.1.0"
-  }
+    "name": "vuenodebirdfront",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+
+    "scripts": {
+        "dev": "nuxt",
+        "lint": "eslint --ext .js,.vue"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@nuxtjs/axios": "^5.12.2",
+        "axios": "^0.20.0",
+        "nuxt": "^2.14.7",
+        "vue": "^2.6.12",
+        "vuetify": "^2.3.14"
+    },
+    "devDependencies": {
+        "@nuxtjs/vuetify": "^1.11.2",
+        "eslint": "^7.11.0",
+        "eslint-config-google": "^0.14.0",
+        "eslint-plugin-vue": "^7.1.0"
+    }
 }
