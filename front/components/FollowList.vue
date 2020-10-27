@@ -1,26 +1,23 @@
 <template>
-  <v-list>
-      <v-list-item>
-          <span>DeepRing</span>
-          <v-icon>mdi-minus-circle-outline</v-icon>
-      </v-list-item>
-      <v-list-item>
-          <span>User2</span>
-          <v-icon>mdi-minus-circle-outline</v-icon>
-      </v-list-item>
-      <v-list-item>
-          <span>User3</span>
-          <v-icon>mdi-minus-circle-outline</v-icon>
-      </v-list-item>
-  </v-list>
+  <div>
+    <follow-user-list v-for="(user, i) in users" :key="i" :userInfo="user"></follow-user-list>
+  </div>
 </template>
 
 <script>
-export default {
+import FollowUserList from '~/components/FollowUserList'
 
+export default {
+  computed:{
+       users() {
+            return this.$store.state.UsersList
+        },
+
+  },
+  components: {
+    FollowUserList,
+  },
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

@@ -47,7 +47,7 @@ export default {
         onLogIn() {
             if (this.$refs.form.validate()) {
                 this.$store.dispatch('users/logIn', {
-                    nickname: this.email,
+                    nickname: 'windsdeath',
                     email: this.email,
                 })
             } else {
