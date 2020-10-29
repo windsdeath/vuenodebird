@@ -1,15 +1,35 @@
 export const state = () => ({
     me: null, //로그인여부
-    FollowingsList: [],
-    FollowersList: [],
-    UsersList: [{
+    FollowingsList: [{
             nickname: 'firstUser',
+            id: '1',
+            type: 'Following'
         },
         {
             nickname: 'seccondUser',
+            id: '2',
+            type: 'Following'
         },
         {
             nickname: 'thirdUser',
+            id: '3',
+            type: 'Following'
+        },
+    ],
+    FollowersList: [{
+            nickname: 'firstUser',
+            id: '1',
+            type: 'Follower'
+        },
+        {
+            nickname: 'seccondUser',
+            id: '2',
+            type: 'Follower'
+        },
+        {
+            nickname: 'thirdUser',
+            id: '3',
+            type: 'Follower'
         },
     ],
 })
@@ -28,11 +48,11 @@ export const mutations = {
     addFollwing(state, payload) {
         state.FollowingsList.push(payload);
     },
-    removeFollwer(state, payload) {
+    removeFollower(state, payload) {
         const index = state.FollowersList.findIndex(v => v.id === payload.id)
         state.FollowersList.splice(index, 1)
     },
-    removeFollwing(state, payload) {
+    removeFollowing(state, payload) {
         const index = state.FollowingsList.findIndex(v => v.id === payload.id)
         state.FollowingsList.splice(index, 1);
     },

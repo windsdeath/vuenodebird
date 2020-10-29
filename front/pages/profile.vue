@@ -18,13 +18,13 @@
       <v-card style="margin-bottom: 20px;">
         <v-container>
           <v-subheader>팔로잉</v-subheader>
-          <follow-list />
+          <follow-list :f="1"/>
         </v-container>
       </v-card>
       <v-card style="margin-bottom: 20px;">
         <v-container>
-          <v-subheader> 팔로워</v-subheader>
-          <follow-list />
+          <v-subheader>팔로워</v-subheader>
+          <follow-list :f="2" />
         </v-container>
       </v-card>
     </v-container>
