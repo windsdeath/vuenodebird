@@ -12,7 +12,7 @@ export default {
   components:{PostCard},
     computed:{
         post(){
-            return this.$store.state.posts.mainPosts.find(v=> v.id === parseInt(this.$route.params.id, 10))
+            return this.$store.state.posts.mainPosts.find(v=> v.id === parseInt(this.$route.params.ipd, 10))
         }
     }
 
