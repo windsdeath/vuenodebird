@@ -67,6 +67,20 @@ export default {
       termsRules: [(v) => !!v || '약관에 동의해야 합니다.'],
     }
   },
+  computed: {
+    me() {
+      return this.$store.state.users.me
+    },
+  },
+  watch: {
+    me(value) {
+      if (value) {
+        this.$router.push({
+          path:'/'
+        })
+      }
+    },
+  },
   methods: {
     onSubmitForm() {
       this.$store
@@ -89,6 +103,7 @@ export default {
       title: '회원가입',
     }
   },
+  middleware: 'anonymous',
 }
 </script>
 
