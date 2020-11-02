@@ -1,11 +1,15 @@
 <template>
-  <div :style="{ marginBottom: '20px' }">
+  <div style="margin-bottom: 20px">
     <v-card>
       <v-img />
+      <v-card-title>
+        <h3>
+          <nuxt-link :to="'/user/' + post.id">{{post.User.nickname}}</nuxt-link>
+        </h3>
+      </v-card-title>
       <v-card-text>
         <div>
-          <h3>{{ post.User.nickname }}</h3>
-          <nuxt-link :to="'/post/'+post.id">{{ post.User.content }}</nuxt-link>
+          <div>{{post.content}}</div>
         </div>
       </v-card-text>
       <v-card-actions>
@@ -24,7 +28,7 @@
               <v-icon>mdi-dots-horizontal</v-icon>
             </v-btn>
           </template>
-          <div style="background: white;">
+          <div style="background: white">
             <v-btn dark color="red" @click="onRemovePost">삭제</v-btn>
             <v-btn text color="orange" @click="onEditPost">수정</v-btn>
           </div>
@@ -32,15 +36,15 @@
       </v-card-actions>
     </v-card>
     <template v-if="commentOpened">
-      <comment-form :post-id="post.id"> </comment-form>
+      <comment-form :post-id="post.id" />
       <v-list>
         <v-list-item v-for="c in post.Comments" :key="c.id">
           <v-list-item-avatar color="teal">
-            <span>{{ c.User.nickname[0] }}</span>
+            <span>{{c.User.nickname[0]}}</span>
           </v-list-item-avatar>
           <v-list-item-content>
-            <h3>{{ c.User.nickname }}</h3>
-            <div>{{ c.content }}</div>
+            <h3>{{c.User.nickname}}</h3>
+            <div>{{c.content}}</div>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -49,35 +53,42 @@
 </template>
 
 <script>
-import CommentForm from '~/components/CommentForm'
+  import CommentForm from '~/components/CommentForm';
 
-export default {
-  components: {
-    CommentForm,
-  },
-  props: {
-    post: {
-      type: Object,
-      require: true,
+  export default {
+    components: {
+      CommentForm,
     },
-  },
-  data() {
-    return {
-      commentOpened: false,
-    }
-  },
-  methods: {
-    onRemovePost() {
-      this.$store.dispatch('posts/remove', {
-        id: this.post.id,
-      })
+    props: {
+      post: {
+        type: Object,
+        required: true,
+      },
     },
-    onEditPost() {},
-    onToggleComment() {
-      this.commentOpened = !this.commentOpened
+    data() {
+      return {
+        commentOpened: false,
+      };
     },
-  },
-}
+    methods: {
+      onRemovePost() {
+        this.$store.dispatch('posts/remove', {
+          id: this.post.id,
+        });
+      },
+      onEditPost() {
+
+      },
+      onToggleComment() {
+        this.commentOpened = !this.commentOpened;
+      },
+    },
+  };
 </script>
 
-<style></style>
+<style scoped>
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+</style>

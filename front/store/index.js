@@ -1,9 +1,12 @@
-export const state =() => ({
-    hello:'vuex',
+export const state = () => ({
+  hello: 'vuex',
 });
 
-export const mutations =  {
-    BYE(state){
-        state.hello = 'goodbye';
-    }    
-}
+export const mutations = {
+  bye(state) {
+    state.hello = 'goodbye';
+  },
+  addMainPost() {
+
+  },
+};

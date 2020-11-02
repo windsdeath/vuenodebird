@@ -1,86 +1,91 @@
 export const state = () => ({
-    me: null, //로그인여부
-    FollowingsList: [{
-            nickname: 'firstUser',
-            id: '1',
-            type: 'Following'
-        },
-        {
-            nickname: 'seccondUser',
-            id: '2',
-            type: 'Following'
-        },
-        {
-            nickname: 'thirdUser',
-            id: '3',
-            type: 'Following'
-        },
-    ],
-    FollowersList: [{
-            nickname: 'firstUser',
-            id: '1',
-            type: 'Follower'
-        },
-        {
-            nickname: 'seccondUser',
-            id: '2',
-            type: 'Follower'
-        },
-        {
-            nickname: 'thirdUser',
-            id: '3',
-            type: 'Follower'
-        },
-    ],
-})
+  me: null,
+  followerList: [],
+  followingList: [],
+  hasMoreFollower: true,
+  hasMoreFollowing: true,
+});
+
+const totalFollowers = 8;
+const totalFollowings = 6;
+const limit = 3;
 
 export const mutations = {
-    setMe(state, payload) {
-        (payload) ? console.log('Login successful'): console.log('Logout successful');
-        state.me = payload;
-    },
-    changeNickname(state, payload) {
-        state.me.nickname = payload.nickname;
-    },
-    addFollwer(state, payload) {
-        state.FollowersList.push(payload);
-    },
-    addFollwing(state, payload) {
-        state.FollowingsList.push(payload);
-    },
-    removeFollower(state, payload) {
-        const index = state.FollowersList.findIndex(v => v.id === payload.id)
-        state.FollowersList.splice(index, 1)
-    },
-    removeFollowing(state, payload) {
-        const index = state.FollowingsList.findIndex(v => v.id === payload.id)
-        state.FollowingsList.splice(index, 1);
-    },
-}
+  setMe(state, payload) {
+    state.me = payload;
+  },
+  changeNickname(state, payload) {
+    state.me.nickname = payload.nickname;
+  },
+  addFollower(state, payload) {
+    state.followerList.push(payload);
+  },
+  addFollowing(state, payload) {
+    state.followingList.push(payload);
+  },
+  removeFollower(state, payload) {
+    const index = state.followerList.findIndex(v => v.id === payload.id);
+    state.followerList.splice(index, 1);
+  },
+  removeFollowing(state, payload) {
+    const index = state.followingList.findIndex(v => v.id === payload.id);
+    state.followingList.splice(index, 1);
+  },
+  loadFollowings(state) {
+    const diff = totalFollowings - state.followingList.length;
+    const fakeUsers = Array(diff > limit ? limit : diff).fill().map(v => ({
+      id: Math.random().toString(),
+      nickname: Math.floor(Math.random() * 1000),
+    }));
+    state.followingList = state.followingList.concat(fakeUsers);
+    state.hasMoreFollowing = fakeUsers.length === limit;
+  },
+  loadFollowers(state) {
+    const diff = totalFollowers - state.followerList.length;
+    const fakeUsers = Array(diff > limit ? limit : diff).fill().map(v => ({
+      id: Math.random().toString(),
+      nickname: Math.floor(Math.random() * 1000),
+    }));
+    state.followerList = state.followerList.concat(fakeUsers);
+    state.hasMoreFollower = fakeUsers.length === limit;
+  },
+};
 
 export const actions = {
-    signUp({ commit, state }, payload) {
-        commit('setMe', payload)
-    },
-    logIn({ commit, state }, payload) {
-        commit('setMe', payload)
-    },
-    logOut({ commit }, payload) {
-        commit('setMe', null)
-    },
-    changeNickname({ commit }, payload) {
-        commit('changeNickname', payload);
-    },
-    addFollowing({ commit }, payload) {
-        commit('addFollowing', payload);
-    },
-    addFollower({ commit }, payload) {
-        commit('addFollower', payload);
-    },
-    removeFollowing({ commit }, payload) {
-        commit('removeFollowing', payload);
-    },
-    removeFollower({ commit }, payload) {
-        commit('removeFollower', payload);
-    },
-}
+  signUp({ commit, state }, payload) {
+    // 서버에 회원가입 요청을 보내는 부분
+    commit('setMe', payload);
+  },
+  logIn({ commit }, payload) {
+    commit('setMe', payload);
+  },
+  logOut({ commit }, payload) {
+    commit('setMe', null);
+  },
+  changeNickname({ commit }, payload) {
+    commit('changeNickname', payload);
+  },
+  addFollowing({ commit }, payload) {
+    commit('addFollowing', payload);
+  },
+  addFollower({ commit }, payload) {
+    commit('addFollower', payload);
+  },
+  removeFollowing({ commit }, payload) {
+    // 비동기 요청
+    commit('removeFollowing', payload);
+  },
+  removeFollower({ commit }, payload) {
+    commit('removeFollower', payload);
+  },
+  loadFollowers({ commit, state }, payload) {
+    if (state.hasMoreFollower) {
+      commit('loadFollowers');
+    }
+  },
+  loadFollowings({ commit, state }, payload) {
+    if (state.hasMoreFollowing) {
+      commit('loadFollowings');
+    }
+  },
+};

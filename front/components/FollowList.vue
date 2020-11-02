@@ -1,38 +1,37 @@
 <template>
-  <div>
-    <div v-if="f === 1">
-      <follow-user-list
-        v-for="(user, i) in FollowersList"
-        :key="i"
-        :userInfo="user"
-      ></follow-user-list>
-    </div>
-    <div v-else-if="f === 2">
-      <follow-user-list
-        v-for="(user, i) in FollowingsList"
-        :key="i"
-        :userInfo="user"
-      ></follow-user-list>
-    </div>
-  </div>
+  <v-list>
+    <v-col v-for="user in users" :key="user.id" cols="12" md="4" style="display: inline-block">
+      <v-list-item>
+        <v-list-item-avatar color="indigo">
+          <span class="white--text headline">{{user.nickname[0]}}</span>
+        </v-list-item-avatar>
+        <v-list-item-content>
+          <v-list-item-title>{{user.nickname}}</v-list-item-title>
+        </v-list-item-content>
+        <v-list-item-action>
+          <v-icon @click="remove(user.id)">mdi-minus-circle-outline</v-icon>
+        </v-list-item-action>
+      </v-list-item>
+    </v-col>
+  </v-list>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import FollowUserList from '~/components/FollowUserList'
-
-export default {
-  props: {
-    f: Number,
-  },
-  computed: {
-    ...mapState('users', ['FollowingsList']),
-    ...mapState('users', ['FollowersList']),
-  },
-  components: {
-    FollowUserList,
-  },
-}
+  export default {
+    props: {
+      abc: Array,
+      users: {
+        type: Array,
+        required: true,
+      },
+      remove: {
+        type: Function,
+        required: true,
+      }
+    },
+  }
 </script>
 
-<style></style>
+<style>
+
+</style>
